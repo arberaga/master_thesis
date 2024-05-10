@@ -1,0 +1,42 @@
+version: 1.0.0
+dataset_name: melbourne after minmax
+separator: ','                   # CSV separator symbol. Default: ','
+edge_data:
+- file_name: edges_council_data.csv
+  etype: [house, in_council, council]
+  src_id_field: node_id           # Column name for source node IDs. Default: src_id
+  dst_id_field: Encoded_Council           # Column name for destination node IDs. Default: dst_id
+- file_name: edges_suburb_data.csv
+  etype: [house, in_suburb, suburb]
+  src_id_field: node_id
+  dst_id_field: Encoded_Suburb
+- file_name: edges_region_data.csv
+  etype: [house, in_region, region]
+  src_id_field: node_id
+  dst_id_field: Encoded_Regionname
+## Reversed edges below
+- file_name: edges_council_data.csv
+  etype: [council, in_council_inv, house]
+  src_id_field: Encoded_Council           # Column name for source node IDs. Default: src_id
+  dst_id_field: node_id        # Column name for destination node IDs. Default: dst_id
+- file_name: edges_suburb_data.csv
+  etype: [suburb, in_suburb_inv, house]
+  src_id_field: Encoded_Suburb
+  dst_id_field: node_id
+- file_name: edges_region_data.csv
+  etype: [region, in_region_inv, house]
+  src_id_field: Encoded_Regionname
+  dst_id_field: node_id
+node_data:
+- file_name: nodes_total_data.csv
+  ntype: house
+  node_id_field: node_id         # Column name for node IDs. Default: node_id
+- file_name: nodes_council_data.csv
+  ntype: council
+  node_id_field: Encoded_Council # Column name for node IDs. Default: node_id
+- file_name: nodes_suburb_data.csv
+  ntype: suburb
+  node_id_field: Encoded_Suburb  # Column name for node IDs. Default: node_id
+- file_name: nodes_region_data.csv
+  ntype: region
+  node_id_field: Encoded_Regionname  # Column name for node IDs. Default: node_id

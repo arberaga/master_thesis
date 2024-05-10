@@ -1,0 +1,55 @@
+version: 1.0.0
+dataset_name: taiwan before minmaxing
+separator: ','                   # CSV separator symbol. Default: ','
+edge_data:
+- file_name: edges_city_data.csv
+  etype: [house, in_city, city]
+  src_id_field: node_id           # Column name for source node IDs. Default: src_id
+  dst_id_field: Encoded_city           # Column name for destination node IDs. Default: dst_id
+- file_name: edges_type_data.csv
+  etype: [house, has_ttype, ttype]
+  src_id_field: node_id
+  dst_id_field: Encoded_type
+- file_name: edges_floor_data.csv
+  etype: [house, has_floor, floor]
+  src_id_field: node_id
+  dst_id_field: Encoded_floor
+- file_name: edges_purpose_data.csv
+  etype: [house, has_purpose, purpose]
+  src_id_field: node_id
+  dst_id_field: Encoded_purpose 
+
+## Reversed edges below
+- file_name: edges_city_data.csv
+  etype: [city, in_city_inv, house]
+  src_id_field: Encoded_city           # Column name for source node IDs. Default: src_id
+  dst_id_field: node_id           # Column name for destination node IDs. Default: dst_id
+- file_name: edges_type_data.csv
+  etype: [ttype, has_ttype_inv, house]
+  src_id_field: Encoded_type
+  dst_id_field: node_id
+- file_name: edges_floor_data.csv
+  etype: [floor, has_floor_inv, house]
+  src_id_field: Encoded_floor
+  dst_id_field: node_id
+- file_name: edges_purpose_data.csv
+  etype: [purpose, has_purpose_inv, house]
+  src_id_field: Encoded_purpose
+  dst_id_field: node_id 
+
+node_data:
+- file_name: nodes_total_data.csv
+  ntype: house
+  node_id_field: node_id         # Column name for node IDs. Default: node_id
+- file_name: nodes_city_data.csv
+  ntype: city
+  node_id_field: Encoded_city # Column name for node IDs. Default: node_id
+- file_name: nodes_floor_data.csv
+  ntype: floor
+  node_id_field: Encoded_floor  # Column name for node IDs. Default: node_id
+- file_name: nodes_type_data.csv
+  ntype: ttype
+  node_id_field: Encoded_type  # Column name for node IDs. Default: node_id
+- file_name: nodes_purpose_data.csv
+  ntype: purpose
+  node_id_field: Encoded_purpose  # Column name for node IDs. Default: node_id
